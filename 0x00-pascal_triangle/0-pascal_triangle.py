@@ -6,6 +6,7 @@ functions:
   * pascal_triangle: returns pascals triangle to nth degree
 """
 
+
 def pascal_triangle(n):
     """
     Generates pascals triangle to nth degree
