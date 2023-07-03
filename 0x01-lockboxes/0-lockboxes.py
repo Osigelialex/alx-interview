@@ -12,7 +12,7 @@ def canUnlockAll(boxes):
     Checks if all boxes can be unlocked
 
     Arguments:
-      boxes: a List of List of boxes
+      boxes: a List of boxes each containing a List of keys
 
     Return:
       True if all boxes can be unlocked otherwise False
