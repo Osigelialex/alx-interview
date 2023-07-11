@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Solves the min operations problem
 
@@ -7,7 +7,7 @@ functions:
 """
 
 
-def minOperations(n):
+def minOperations(n) -> int:
     """
     finds mininum operations to reach n characters
     Argument:
