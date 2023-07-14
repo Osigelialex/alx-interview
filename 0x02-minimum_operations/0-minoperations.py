@@ -13,6 +13,9 @@ def minOperations(n) -> int:
     Argument:
       n: integer
     """
+    if n <= 1:
+        return 0
+
     characters = 2
     minimum_operations = 2
     copied = 1
