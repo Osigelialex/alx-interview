@@ -3,7 +3,7 @@
 Solves the min operations problem
 
 functions:
-  * minOperations(n): returns solution to min operations problem
+  * minOperations(n): returns solution to min operations
 """
 
 
@@ -13,16 +13,17 @@ def minOperations(n) -> int:
     Argument:
       n: integer
     """
-    chars = 2
-    ops = 2
-    cp = 2
+    characters = 2
+    minimum_operations = 2
+    copied = 1
 
-    while chars != n:
-        if n % chars != 0:
-            chars += cp
-            ops += 1
+    while characters != n:
+        if n % characters != 0:
+            characters += copied
+            minimum_operations += 1
         else:
-            cp = chars
-            chars *= 2
-            ops += 2
-    return ops
+            copied = characters
+            characters *= 2
+            minimum_operations += 2
+
+    return minimum_operations
