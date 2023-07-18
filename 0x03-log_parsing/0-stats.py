@@ -62,7 +62,6 @@ if __name__ == "__main__":
                 for code, count in status_codes.items():
                     if count > 0:
                         print(f"{code}: {count}")
-                    status_codes[code] = 0
                 line_count = total_file_size = 0
 
             if validate(line):
@@ -78,4 +77,3 @@ if __name__ == "__main__":
         for code, count in status_codes.items():
             if count > 0:
                 print(f"{code}: {count}")
-        raise KeyboardInterrupt()
