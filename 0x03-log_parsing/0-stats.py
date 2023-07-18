@@ -4,8 +4,6 @@ A module for solving the log parsing problem
 
 functions:
   validate(line): checks if line meets requirement
-  extract_file_size(line): extracts file size from line
-  extract_status_code(line): extracts the status code from line
 """
 import re
 
@@ -19,25 +17,6 @@ def validate(line):
     pattern = r"^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.+)\] \"GET " \
         r"\/projects\/260 HTTP\/1\.1\" (\d{3}) (\d+)$"
     return re.match(pattern, line)
-
-
-def extract_file_size(line):
-    """extracts file size for string
-
-    Args:
-        line (string): line read from stdin
-    """
-    return line.split()[-1]
-
-
-def extract_status_code(line):
-    """extracts status code from line
-
-    Args:
-        line (string): line read from stdin
-    """
-    return line.split()[-2]
-
 
 if __name__ == "__main__":
     import sys
@@ -66,12 +45,13 @@ if __name__ == "__main__":
 
             if validate(line):
                 line_count += 1
-                total_file_size += int(extract_file_size(line))
-                code = extract_status_code(line)
+                total_file_size += int(line.split()[-1])
+                code = line.split()[-2]
                 status_codes[code] = status_codes[code] + 1
             else:
                 line_count += 1
-                continue
+                pass
+
     except KeyboardInterrupt:
         print(f"File size: {total_file_size}")
         for code, count in status_codes.items():
