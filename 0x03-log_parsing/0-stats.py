@@ -62,7 +62,7 @@ if __name__ == "__main__":
                 for code, count in status_codes.items():
                     if count > 0:
                         print(f"{code}: {count}")
-                line_count = total_file_size = 0
+                line_count = 0
 
             if validate(line):
                 line_count += 1
