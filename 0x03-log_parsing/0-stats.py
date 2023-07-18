@@ -43,7 +43,7 @@ if __name__ == "__main__":
     import sys
 
     total_file_size = 0
-    line_count = 0
+    line_count = 1
     status_codes = {
         "200": 0,
         "301": 0,
@@ -70,7 +70,8 @@ if __name__ == "__main__":
                 code = extract_status_code(line)
                 status_codes[code] += status_codes[code] + 1
             else:
-                print("not valid")
+                line_count += 1
+                continue
     except KeyboardInterrupt:
         print(f"File size: {total_file_size}")
         for code, count in status_codes.items():
