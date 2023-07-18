@@ -70,9 +70,9 @@ if __name__ == "__main__":
                 code = extract_status_code(line)
                 status_codes[code] += status_codes[code] + 1
             else:
-                continue
+                print("not valid")
     except KeyboardInterrupt:
         print(f"File size: {total_file_size}")
-        for code, count in status_codes.items:
+        for code, count in status_codes.items():
             if count > 0:
                 print(f"{code}: {count}")
