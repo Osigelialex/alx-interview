@@ -27,7 +27,7 @@ def extract_file_size(line):
     Args:
         line (string): line read from stdin
     """
-    return line[line.rfind(' '):]
+    return line.split()[-1]
 
 
 def extract_status_code(line):
@@ -36,14 +36,14 @@ def extract_status_code(line):
     Args:
         line (string): line read from stdin
     """
-    return line[line.rfind('"') + 2:line.rfind(' ')]
+    return line.split()[-2]
 
 
 if __name__ == "__main__":
     import sys
 
     total_file_size = 0
-    line_count = 1
+    line_count = 0
     status_codes = {
         "200": 0,
         "301": 0,
