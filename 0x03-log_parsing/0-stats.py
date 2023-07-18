@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     try:
         for line in sys.stdin:
-            if line_count % 10 == 0 and line_count > 0:
+            if line_count == 10:
                 print(f"File size: {total_file_size}")
                 for code, count in status_codes.items():
                     if count > 0:
