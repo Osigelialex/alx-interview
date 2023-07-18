@@ -4,6 +4,8 @@ A module for solving the log parsing problem
 
 functions:
   validate(line): checks if line meets requirement
+  extract_file_size(line): extracts file size from line
+  extract_status_code(line): extracts the status code from line
 """
 import re
 
