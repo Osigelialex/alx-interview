@@ -25,14 +25,25 @@ def validUTF8(data: List) -> bool:
     """
     if data is None:
         return False
-    binary_data = convert_to_binary(data)
 
-    for i in range(len(binary_data)):
+    binary_data = convert_to_binary(data)
+    i = 0
+
+    while i < len(binary_data):
         header = get_header(binary_data[i])
+
+        if header > len(binary_data) or header > 4:
+            return False
+
+        extra_bytes = binary_data[i + 1: i + header]
+
+        if header >= 1 and extra_bytes == []:
+            return False
+        if any([not x.startswith('10') for x in extra_bytes]):
+            return False
+
         if header > 0:
-            extra_bytes = binary_data[i + 1: i + header]
-            if extra_bytes == [] and i == len(binary_data) - 1:
-                return False
-            if any([not x.startswith('10') for x in extra_bytes]):
-                return False
+            i = i + header
+        else:
+            i += 1
     return True
