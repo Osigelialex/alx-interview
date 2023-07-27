@@ -29,10 +29,10 @@ def validUTF8(data: List) -> bool:
 
     for i in range(len(binary_data)):
         header = get_header(binary_data[i])
-        if header > 1:
-            if i == len(binary_data) - 1:
-                return False
+        if header > 0:
             extra_bytes = binary_data[i + 1: i + header]
+            if extra_bytes == [] and i == len(binary_data) - 1:
+              return False
             if any([not x.startswith('10') for x in extra_bytes]):
                 return False
     return True
