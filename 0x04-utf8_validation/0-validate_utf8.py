@@ -24,7 +24,7 @@ def validUTF8(data: List) -> bool:
     """checks if utf8 encoding is valid
     """
     if data is None:
-      return False
+        return False
 
     binary_data = convert_to_binary(data)
     i = 0
