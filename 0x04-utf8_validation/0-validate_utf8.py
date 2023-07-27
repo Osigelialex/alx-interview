@@ -23,8 +23,8 @@ def get_header(byte: str) -> int:
 def validUTF8(data: List) -> bool:
     """checks if utf8 encoding is valid
     """
-    if data is None:
-        return False
+    if any([not isinstance(x, int) for x in data]) or data is None:
+      return False
 
     binary_data = convert_to_binary(data)
     i = 0
