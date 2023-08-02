@@ -17,7 +17,7 @@ def is_safe(board, row, col, N):
 def nqueens_util(board, row, N, solutions):
     """insert queens at safe positions on board"""
     if row == N:
-        solutions.append([[(i, j) for j in range(N)
+        solutions.append([[[i, j] for j in range(N)
                            if board[i][j] == 1][0] for i in range(N)])
         return
 
