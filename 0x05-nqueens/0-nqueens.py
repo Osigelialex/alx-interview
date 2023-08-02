@@ -6,13 +6,9 @@ import sys
 def is_safe(board, row, col, N):
     """Checks if cell is safe for queen"""
     for i in range(row):
-        if board[i][col] == 1:
-            return False
-
-        if col - (row - i) >= 0 and board[i][col - (row - i)] == 1:
-            return False
-
-        if col + (row - i) < N and board[i][col + (row - i)] == 1:
+        if board[i][col] == 1 or col - (row - i) >= 0 and \
+            board[i][col - (row - i)] == 1 or col + (row - i) \
+                < N and board[i][col + (row - i)] == 1:
             return False
 
     return True
@@ -21,7 +17,7 @@ def is_safe(board, row, col, N):
 def nqueens_util(board, row, N, solutions):
     """insert queens at safe positions on board"""
     if row == N:
-        solutions.append([[(i, j) for j in range(N) 
+        solutions.append([[(i, j) for j in range(N)
                            if board[i][j] == 1][0] for i in range(N)])
         return
 
