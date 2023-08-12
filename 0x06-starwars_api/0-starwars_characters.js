@@ -1,30 +1,46 @@
 #!/usr/bin/node
 const request = require('request');
-const process = require('process');
 
-const movieID = process.argv[2];
-const api = 'https://swapi-api.alx-tools.com/api/';
-const filmsEndPoint = `${api}films/${movieID}`;
+const getCharacterData = async (movieID) => {
+  const api = 'https://swapi-api.alx-tools.com/api/';
+  const movieEndPoint = `${api}films/${movieID}`;
+  const resp = await new Promise((resolve, reject) => {
+    request(movieEndPoint, (error, response, body) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(body);
+      }
+    });
+  });
+  const data = JSON.parse(resp);
+  const characterEndPoints = data.characters;
+  return characterEndPoints;
+};
 
-request(filmsEndPoint, (error, response, data) => {
-  if (!error && response.statusCode === 200) {
-    const json = JSON.parse(data);
-    const characterEndPoints = json.characters;
-
-    function printCharacterNames (index) {
-      if (index >= characterEndPoints.length) return;
-
-      request(characterEndPoints[index], (charError, charResponse, charData) => {
-        if (!charError && charResponse.statusCode === 200) {
-          const json = JSON.parse(charData);
-          const characterName = json.name;
-          console.log(characterName);
+const printCharacterNames = async (characterEndPoints) => {
+  for (const endpoint of characterEndPoints) {
+    const resp = await new Promise((resolve, reject) => {
+      request(endpoint, (error, response, body) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(body);
         }
       });
-
-      printCharacterNames(++index);
-    }
-
-    printCharacterNames(0);
+    });
+    const data = JSON.parse(resp);
+    const characterName = data.name;
+    console.log(characterName);
   }
+};
+
+const main = async () => {
+  const movieID = process.argv[2];
+  const characterData = await getCharacterData(movieID);
+  await printCharacterNames(characterData);
+};
+
+main().catch(error => {
+  console.error('An error occurred:', error);
 });
