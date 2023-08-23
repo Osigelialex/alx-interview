@@ -8,6 +8,9 @@ def makeChange(coins, total) -> int:
     Finds the least number of coins needed
     to arrive at total
     """
+    if total <= 0:
+      return 0
+
     coins.sort()
     total_coins = 0
     target = total
