@@ -9,13 +9,13 @@ def makeChange(coins, total) -> int:
     to arrive at total
     """
     if total <= 0:
-      return 0
+        return 0
 
     coins.sort()
     total_coins = 0
     target = total
 
-    for i in range(len(coins) - 1, 0, -1):
+    for i in range(len(coins) - 1, -1, -1):
         if coins[i] <= target:
             total_coins += target // coins[i]
             target = target % coins[i]
