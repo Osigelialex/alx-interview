@@ -2,10 +2,9 @@
 """
 module for solving island perimeter problem
 """
-from typing import List
 
 
-def island_perimeter(grid: List[List]):
+def island_perimeter(grid):
     visited = set()
 
     def dfs(i, j):
