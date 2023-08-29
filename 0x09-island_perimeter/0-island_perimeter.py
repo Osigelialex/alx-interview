@@ -5,6 +5,7 @@ module for solving island perimeter problem
 
 
 def island_perimeter(grid):
+    """finds perimeter of island in grid"""
     visited = set()
 
     def dfs(i, j):
