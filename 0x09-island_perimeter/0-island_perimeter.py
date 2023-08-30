@@ -5,7 +5,9 @@ module for solving island perimeter problem
 
 
 def island_perimeter(grid):
-    """finds perimeter of island in grid"""
+    """
+    finds perimeter of island in grid
+    """
     visited = set()
 
     def dfs(i, j):
@@ -26,3 +28,5 @@ def island_perimeter(grid):
         for j in range(1, len(grid[0]) - 1):
             if grid[i][j] == 1:
                 return dfs(i, j)
+
+    return 0
