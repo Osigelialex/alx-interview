@@ -4,6 +4,8 @@
 
 
 def is_prime(N):
+    """verifies if a number is a prime number
+    """
     if N < 2:
         return False
     for i in range(2, int(N ** 0.5) + 1):
@@ -13,7 +15,11 @@ def is_prime(N):
 
 
 def isWinner(x, nums):
+    """Evaluates the winner of the game
+    """
     def play(N):
+        """Plays a current round of the game
+        """
         maria_turn = True
         found_winner = False
         round_winner = False
