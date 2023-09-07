@@ -51,4 +51,9 @@ def isWinner(x, nums):
         else:
             b_points += 1
 
-    return 'Maria' if m_points > b_points else 'Ben'
+    if m_points > b_points:
+        return 'Maria'
+    elif b_points > m_points:
+        return 'Ben'
+    else:
+        return None
