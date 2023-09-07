@@ -14,9 +14,12 @@ def is_prime(N):
     return True
 
 
-def isWinner(x, nums):
+def isWinner(x: int, nums) -> str:
     """Evaluates the winner of the game
     """
+    if x < 1 or len(nums) == 0:
+        return None
+
     def play(N):
         """Plays a current round of the game
         """
